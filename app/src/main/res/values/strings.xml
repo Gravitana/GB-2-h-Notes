@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">GB-2-h-Notes</string>
+    <string name="app_name">Заметки</string>
+    <string name="delete_before_add">Удалить перед добавлением</string>
+    <string name="back_as_remove_fragment">Назад для удаления фрагмента</string>
+    <string name="replace">заменить</string>
+    <string name="add">добавить</string>
+    <string name="new_fragment">Новый фрагмент:</string>
+    <string name="use_backstack">Использовать backstack</string>
+    <string name="main_screen">Главный экран</string>
+    <string name="favorite_screen">Экран избранного</string>
+    <string name="settings">Настройки</string>
+    <string name="favorite">Избранное</string>
+    <string name="main">Главный</string>
+    <string name="back">Назад</string>
+    <string name="search">поиск</string>
+    <string name="item1">Элемент 1</string>
+    <string name="item2">Элемент 2</string>
+    <string name="new_menu_item_added">Добавленный элемент меню</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="fragment_navigation">Навигация по фрагментам</string>
 </resources>
