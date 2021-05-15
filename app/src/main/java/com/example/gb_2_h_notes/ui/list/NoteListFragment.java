@@ -1,6 +1,10 @@
 package com.example.gb_2_h_notes.ui.list;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,22 +15,20 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.example.gb_2_h_notes.R;
 import com.example.gb_2_h_notes.domain.MockNotesRepository;
 import com.example.gb_2_h_notes.domain.Note;
-import com.example.gb_2_h_notes.ui.MainActivity;
 import com.example.gb_2_h_notes.ui.NoteDetailFragment;
 
 import java.util.List;
 
 public class NoteListFragment extends Fragment {
 
+    public static final String CURRENT_NOTE = "CurrentNote";
+
     private boolean isLandscape;
+
+    private Note currentNote;
 
     public NoteListFragment() {
         // Required empty public constructor
@@ -45,6 +47,16 @@ public class NoteListFragment extends Fragment {
 
         isLandscape = getResources().getBoolean(R.bool.isLandscape);
 
+        if (savedInstanceState != null) {
+            currentNote = savedInstanceState.getParcelable(CURRENT_NOTE);
+        }
+
+/*
+        if (isLandscape) {
+            openNoteDetail(view, currentNote);
+        }
+*/
+
         List<Note> notes = new MockNotesRepository().getNotes();
 
         RecyclerView notesList = view.findViewById(R.id.notes_list);
@@ -60,15 +72,21 @@ public class NoteListFragment extends Fragment {
         adapter.setNotesListItemClickListener(new NotesAdapter.OnNotesListItemClickListener() {
             @Override
             public void onNotesListItemClick(View view, int position) {
-                openNoteDetail(view, position, notes.get(position));
+                currentNote = notes.get(position);
+                openNoteDetail(view, currentNote);
             }
         });
 
         adapter.notifyDataSetChanged(); // перерисовка списка
     }
 
-    private void openNoteDetail(View view, int position, Note note) {
-//        Toast.makeText(getContext(), note.getTitle() + " (on " + position + " position)", Toast.LENGTH_SHORT).show();
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(CURRENT_NOTE, currentNote);
+    }
+
+    private void openNoteDetail(View view, Note note) {
 
         AppCompatActivity activity = (AppCompatActivity) view.getContext();
 

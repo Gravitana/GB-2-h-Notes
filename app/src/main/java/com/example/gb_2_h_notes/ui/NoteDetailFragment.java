@@ -18,7 +18,9 @@ import com.example.gb_2_h_notes.domain.Note;
 
 public class NoteDetailFragment extends Fragment {
 
-    private static final String CURRENT_NOTE = "Current note";
+    public static final String CURRENT_NOTE = "CurrentNote";
+
+    private Note note;
 
     private TextView id, title, body, date;
     private ImageView image;
@@ -54,7 +56,6 @@ public class NoteDetailFragment extends Fragment {
         date = view.findViewById(R.id.note_detail_date);
         image = view.findViewById(R.id.note_detail_image);
 
-        Note note = null;
         if (getArguments() != null) {
             note = getArguments().getParcelable(CURRENT_NOTE);
         }
@@ -71,4 +72,12 @@ public class NoteDetailFragment extends Fragment {
                     .into(image);
         }
     }
+
+/*
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putParcelable(CURRENT_NOTE, note);
+        super.onSaveInstanceState(outState);
+    }
+*/
 }
