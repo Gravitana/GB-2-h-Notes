@@ -48,13 +48,17 @@ public class NoteListFragment extends Fragment {
 
         adapter.addData(notes);
 
-        adapter.setItemClickListener(new NotesAdapter.OnItemClickListener() {
+        adapter.setNotesListItemClickListener(new NotesAdapter.OnNotesListItemClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
-                Toast.makeText(getContext(), "Click on " + position + " position", Toast.LENGTH_SHORT).show();
+            public void onNotesListItemClick(View view, int position) {
+                openNoteDetail(notes.get(position), position);
             }
         });
 
         adapter.notifyDataSetChanged(); // перерисовка списка
+    }
+
+    private void openNoteDetail(Note note, int position) {
+        Toast.makeText(getContext(), note.getTitle() + " (on " + position + " position)", Toast.LENGTH_SHORT).show();
     }
 }

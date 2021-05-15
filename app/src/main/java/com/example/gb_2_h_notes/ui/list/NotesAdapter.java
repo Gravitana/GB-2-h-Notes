@@ -20,7 +20,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
     private ArrayList<Note> data = new ArrayList<>();
 
-    private OnItemClickListener itemClickListener;
+    private OnNotesListItemClickListener notesListItemClickListener;
 
     public void addData(List<Note> toAdd) {
         data.addAll(toAdd);
@@ -52,8 +52,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
         return data.size();
     }
 
-    public void setItemClickListener(OnItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
+    public void setNotesListItemClickListener(OnNotesListItemClickListener notesListItemClickListener) {
+        this.notesListItemClickListener = notesListItemClickListener;
     }
 
     class NotesViewHolder extends RecyclerView.ViewHolder {
@@ -75,8 +75,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (itemClickListener != null) {
-                        itemClickListener.onItemClick(v, getAdapterPosition());
+                    if (notesListItemClickListener != null) {
+                        notesListItemClickListener.onNotesListItemClick(v, getAdapterPosition());
                     }
                 }
             });
@@ -85,8 +85,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
     }
 
     // Интерфейс для обработки нажатий на элементе списка
-    public interface OnItemClickListener {
-        void onItemClick(View view , int position);
+    public interface OnNotesListItemClickListener {
+        void onNotesListItemClick(View view , int position);
     }
 
 }
