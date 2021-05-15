@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.gb_2_h_notes.EngineSettings;
 import com.example.gb_2_h_notes.R;
+import com.example.gb_2_h_notes.ui.list.NoteListFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
@@ -54,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
         initButtonSettings();
         initButtonBack();
 */
+        initContent();
+    }
+
+    private void initContent() {
+        addFragment(new NoteListFragment());
     }
 
     private Toolbar initToolbar() {
@@ -93,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 addFragment(new SettignsFragment());
                 return true;
             case R.id.action_main:
-                addFragment(new MainFragment());
+                addFragment(new NoteListFragment());//addFragment(new MainFragment());
                 return true;
             case R.id.action_favorite:
                 addFragment(new FavoriteFragment());
@@ -135,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 /*
     private void initButtonMain() {

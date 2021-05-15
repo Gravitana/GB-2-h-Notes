@@ -5,4 +5,8 @@
     <dimen name="sizeItemList">30sp</dimen>
     <dimen name="nav_header_height">200dp</dimen>
     <dimen name="nav_header_dimen">42sp</dimen>
+    <dimen name="margin_item">4dp</dimen>
+    <dimen name="padding_top">16dp</dimen>
+    <dimen name="pic_size">60dp</dimen>
+    <dimen name="img_height">200dp</dimen>
 </resources>
