@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.gb_2_h_notes.R;
 import com.example.gb_2_h_notes.domain.MockNotesRepository;
@@ -46,6 +47,13 @@ public class NoteListFragment extends Fragment {
         notesList.setAdapter(adapter);
 
         adapter.addData(notes);
+
+        adapter.setItemClickListener(new NotesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getContext(), "Click on " + position + " position", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         adapter.notifyDataSetChanged(); // перерисовка списка
     }
